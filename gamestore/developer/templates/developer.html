@@ -1,0 +1,36 @@
+{% extends "content_base.html" %}
+
+{% load staticfiles %}
+
+{% block developer_selection %}
+	class="selected"
+{% endblock %}
+
+{% block content_title %}
+	DEVELOPER PANEL
+{% endblock %}
+
+{% block content %}	
+
+	<!-- This is a menu for developer site -->
+	<div class="upper_Menu dev_menu developer_panel">
+
+			<a href="/developer/" class="developer_menu_overView {% block developer_overview_selection %} {% endblock %}">overview</a>
+
+			<a href="/developer/inventory/" class="developer_menu_edit {% block developer_edit_selection %} {% endblock %}">inventory</a>
+
+			<a href="/developer/inventory/add" class="developer_menu_add {% block developer_add_selection %} {% endblock %}">add a game</a>
+
+			<a href="/developer/stats/" class="developer_menu_stats {% block developer_stats_selection %} {% endblock %}">statistics</a>
+
+	</div> <!-- End developer menu -->
+
+	<section class="developer_content_section">
+		<div class="developer_content">
+		
+			{% block developer_main %}			
+			{% endblock %}	
+									
+		</div><!-- end content -->
+	</section>
+{% endblock %}

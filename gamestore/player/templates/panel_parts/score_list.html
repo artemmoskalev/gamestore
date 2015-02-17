@@ -1,0 +1,30 @@
+{% extends "player_panel_base.html" %}
+
+{% block panel_data %}	
+	<div id="scores_label">Best Scores:</div>
+	<ul id="scores">
+		{% for game, scores in games.items %}
+			<li>
+				<span>{{game}}</span>
+				<div class="score_list">
+					{% for score, time in scores.items %} 
+						<span>{{score}}<span class="time_hint"> ({{time|date:"SHORT_DATE_FORMAT"}})</span></span>  
+						<br /> 
+					{% endfor %}
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#scores > li > span').click(function() {
+				if ($(this).attr('class') != 'active') {
+					$('#scores li div').slideUp();
+					$(this).next().slideToggle();
+					$('#scores li span').removeClass('active');
+					$(this).addClass('active');
+				}
+			});
+		});
+	</script>
+{% endblock %}

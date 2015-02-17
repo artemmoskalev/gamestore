@@ -1,0 +1,38 @@
+{% extends "content_base.html" %}
+
+{% block player_selection %}
+	class="selected"
+{% endblock %}
+
+{% block navigation_link %}					
+	<li><a href="/games/{{purchase_details.name}}/" class="previous" title="Back"></a></li>
+{% endblock %}
+
+{% block content_title %}	
+	PAYMENT SYSTEM
+{% endblock %}
+
+{% block content %}
+	<form class="basic_form" method="POST" action="http://payments.webcourse.niksula.hut.fi/pay/">
+		{% csrf_token %} 
+		<input type="hidden" name="success_url"	value="{{payment_details.success_url}}" /> 
+		<input type="hidden" name="cancel_url" value="{{payment_details.cancel_url}}" /> 
+		<input type="hidden" name="error_url" value="{{payment_details.error_url}}" />
+	
+		<input type="hidden" name="amount" value="{{payment_details.amount}}" />
+		<input type="hidden" name="pid" value="{{payment_details.pid}}" /> 
+		<input type="hidden" name="sid" value="{{payment_details.sid}}" /> 
+		<input type="hidden" name="checksum" value="{{payment_details.checksum}}" />
+	
+		<label>Buyer:</label>
+		<div class="information_label">{{purchase_details.buyer}}</div>
+		<label>Product Name:</label>
+		<div class="information_label">{{purchase_details.name}}</div>
+		<label>Category:</label>
+		<div class="information_label">{{purchase_details.category}}</div>
+		<label>Amount:</label>
+		<div class="information_label">{{payment_details.amount}}</div>
+		<br /> 
+		<input type="submit" value="Purchase" id="submit" />
+	</form>
+{% endblock %}

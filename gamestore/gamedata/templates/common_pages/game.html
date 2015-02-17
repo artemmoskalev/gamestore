@@ -1,0 +1,48 @@
+{% extends "content_base.html" %}
+
+{% block navigation_link %}					
+	<li><a href="/games/{{game.category}}/" class="previous" title="Back"></a></li>
+{% endblock %}
+
+{% block content_title %}	
+	{{game.title}}
+{% endblock %}
+
+{% block content %}	
+	<img id="game_cover" src="{{game.pic_url}}" />
+	<div class="game_details">	
+	
+		<!-- If the game is purchased, instead of the game description, a list of global scores appears  -->			
+		{% if game.is_purchased %} 
+			<table>
+				<tr>
+					<td class="heading" colspan="2">Best Scores:</td>
+				</tr>
+				{% for player, score in game.highscores.items %}
+					<tr>
+						<td class="player_name_column">{{player}}</td>
+						<td class="player_score_column">{{score}}</td>
+					</tr>
+				{% endfor %}				
+			</table>
+		{% else %}
+			<h3>Description:</h3>
+			<p>{{game.description}}</p>
+			<h3>Category:</h3>
+			<p>{{game.category}}</p>
+			<h3>Publisher:</h3>
+			<p>{{game.publisher}}</p>
+		{% endif %} 
+		
+		<!-- If the game is purchased, here appears a button to play it  -->
+		{% if user.is_authenticated %} 
+			{% if game.is_purchased %} 
+				<a href="/play/{{game.title}}/">Play!</a> 
+			{% else %}
+				<h3>Price:</h3>
+				<p class="highlight">{{game.price}} &nbsp;EUR</p>
+				<a href="/payment/{{game.id}}">Buy Now!</a> 
+			{% endif %} 
+		{% endif %}
+	</div>
+{% endblock %}

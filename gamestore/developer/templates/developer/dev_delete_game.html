@@ -1,0 +1,33 @@
+{% extends "developer.html" %}
+
+{% block developer_edit_selection %}
+selected
+{% endblock %}
+
+{% block developer_main %}
+	<h3 class="dev_form_title">Delete game: {{game.name}}</h3>
+
+	<P>If you really want to delete game <strong>{{game.name}}</strong> check the checkbox below and click confirm.
+	<br><strong>NOTE!</strong> after you confirm you cannot revert your decission.
+	</p>
+
+	<form class="game_form game_delete_form" method="POST" action=".">	
+		{% csrf_token %}	
+
+		<div class="delete_form_checkbox_wrapper">
+			<label for="checkbox" class="delet_game_checkbox_label"> I want to delete game {{game.name}} permanently </label>		
+		    <input type="checkbox" required name="delete_game">
+		</div>
+
+		<input type="submit" value="confirm" id="submit" />
+
+	    <div class="cancel_form_link"><a href="/developer/inventory/">Cancel</a></div>	
+	    <p id="errors">
+	    	{% for error in errors %}
+	    		{{error}}
+	    		<br />		    	
+			{% endfor %}
+		</p>			
+	</form>
+
+{% endblock %}

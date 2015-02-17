@@ -1,0 +1,138 @@
+/* css file which contains header definitions for different screen sizes */
+
+/* header definition for the size more than 1000px */
+@media (min-width:1000px) {
+    header{
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        min-height: 100%;
+        padding: 0 0 0 50px;
+        background: #ffffff; 
+        float: left;
+        overflow: hidden;
+        z-index: 9999;
+    }
+    header .logo {
+        margin-top: 100px;
+    }
+	
+	/* setting CSS for navigation links */
+    header nav ul {
+        display: block;
+        overflow: hidden;
+        margin-top: 100px;
+        list-style: none;
+    }
+    header nav ul#auth_block {	
+		border-top:3px outset black;	
+		padding-top: 30px;
+	}
+    header nav ul li {
+        display: block;
+        margin-bottom: 30px;
+    }       
+    header nav ul li a {
+        color: #454545;
+        font-family: "raleway-regular", arial;
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 1px;
+    }
+    header nav ul li a:hover,
+    header nav ul li a.selected {
+        color: #969595;
+    }
+    
+    /* setting footer CSS */
+    header .footer {
+        position: absolute;
+        bottom: 50px;
+        font-size: 16px;
+        font-family: "raleway-bold";
+    }
+	
+    header .creators {
+        color: #454545;
+        font-family: "raleway-regular", arial;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        line-height: 18px;
+        clear: both;
+    }
+
+	/* make the button to open and close mobile menu invisible for the large screen */
+    #menu_icon,
+    .close_menu {
+        display: none;
+    }
+}
+
+/* css definition for small screen sizes - less than 1100px and for smallest ones such as 550px */
+@media (max-width:1100px) {
+    header{
+        display: block;
+        width: 100%;
+        min-height: 100px;
+        padding: 0;
+        position: relative;
+    }
+    header .logo {
+        margin: 40px 0 0 30px;
+        display: inline-block;    
+        float:left;    
+    }
+    header .footer {
+        display: none;
+    } 
+        
+    header nav ul {
+        list-style: none;
+        display: none;
+        margin-top: 35px;
+        position: relative;
+        clear:both;
+    }
+    header nav ul#auth_block {	
+		border-top:3px outset black;	
+		padding-top: 10px;
+		border-bottom:3px inset black;	
+		padding-bottom: 10px;
+	}
+	
+    header nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 30px 0;
+        text-align: center;
+        color: #454545;
+        font-family: "raleway-regular", arial;
+        font-size: 14px;
+        text-decoration: none;
+        border-top: 1px solid #f7f5f5;
+        background: #fff;
+    }    
+    header nav ul li a:active {
+        background: #f7f5f5;
+    }
+    header #menu_icon,
+    header .close_menu {
+        float: right;
+        margin: 30px 30px 0 0;
+        display: block;
+    }
+    .show_menu {
+        display: block;
+    }  
+    
+}
+
+/* for IE which shrinks the screen much */ 
+@media (max-width:280px) {
+    header .logo {
+    	display: none;
+    }
+}

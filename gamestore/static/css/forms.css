@@ -1,0 +1,284 @@
+/* This file contains styles for the forms on the web site */
+.basic_form {			
+	width: 400px;
+	margin: 0 auto;	
+}
+/* sets css of the labels and inputs of the form */
+.basic_form label {
+	padding: 10px 9px;
+	display: inline-block;
+	width: 150px;
+	text-align: right;	
+	font-size: 18px;
+	color: #626262;
+}					
+.basic_form input {
+    padding: 9px;
+    border: solid 1px #E5E5E5;	
+    margin-top: 5px;	
+    margin-bottom: 5px;	    
+    font: normal 13px/100% "raleway-bold", arial;
+    width: 200px;
+    background: #FFFFFF;
+}		   		
+.basic_form input:hover, .basic_form input:focus {
+    border-color: #C9C9C9;
+}
+.basic_form .information_label {
+	display: inline-block;
+    padding: 10px;
+    border: solid 1px #E5E5E5;
+    margin: 0 auto;	
+    margin-top: 3px;	
+    margin-bottom: 5px;	    
+    font: normal 13px/100% "raleway-bold", arial;
+    width: 200px;
+    background: #FFFFFF;
+}	
+
+/*select menu with overflowing and its IE fix */
+.basic_form .custom_select {
+	padding: 0px;
+    border: solid 1px #E5E5E5;	
+    margin-top: 10px;
+    margin-bottom: 5px;   
+    margin-right: 8px; 
+    width: 218px;
+    height: 32px;
+    float: right;
+    background: #FFFFFF;  
+    overflow: hidden;
+}
+.basic_form .custom_select:hover {
+    border-color: #C9C9C9;
+}
+.basic_form .custom_select select {
+	width: 250px;
+	height: 34px;
+	border: none;
+	outline: 0;
+	padding-left: 10px;
+	padding-bottom: 2px;
+	font: normal 18px "raleway-bold", arial;   
+    background: url('../img/select_arrow.png') #FFFFFF;
+    background-repeat: no-repeat;
+    background-position: 182px -31px;
+    cursor: pointer;    
+}
+/* padding for Firefox */
+option {	
+	padding-left: 12px;
+}
+
+/* submit button in the form */
+.basic_form input#submit {
+    width: 220px;
+    float: right;    
+    margin-top: 32px;
+    margin-bottom: 10px;
+    margin-right: 8px;
+    background: #E5E5E5;
+    border: 1px solid #FFFFFF;
+    outline: 0;
+    font-size: 14px;
+    color: #4b4848;
+}
+.basic_form input#submit:hover {
+	cursor: pointer;
+	background: #C6C6C6;
+}
+
+/* error block in the form */
+.basic_form #errors {
+	width: 100%;
+	clear: both;
+    border-top: 3px outset #626262;	
+    padding-top: 15px;
+    margin-top: 15px;
+    font-family: "raleway-semibold", arial; 
+    font-size: 18px;   
+    line-height: 30px;
+    font-style: italic; 
+    color: red;
+    text-align: center;
+}
+		
+/* shrinks the form into one column */
+@media (max-width:550px) { 
+	.basic_form {
+		width: 100%;
+		text-align: center;
+	}
+	.basic_form label, .basic_form input {	
+		text-align: center;
+		float: none;
+	}
+	.basic_form .custom_select, .basic_form input#submit {
+		float: none;
+		margin: 0 auto;		
+		margin-top: 30px;
+		text-align: center;
+	}	
+	.basic_form #errors {
+		font-size: 14px;
+		line-height: 25px;
+	}
+}
+
+
+/* DEVELOPER FORMS */
+
+/* FORMS */
+/* CREATE/EDIT GAME */
+
+.form_half {
+    float: left;
+    width: 50%;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px){
+
+    .form_half {
+        width: 100%;
+    }
+
+}
+
+.game_form input, .game_form label, .game_form select, .game_form textarea{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom:15px;
+}
+
+.game_form label{
+    margin-bottom:5px;
+}
+
+
+.game_form textarea{
+    min-height: 150px;
+}
+
+.game_form input, .game_form  select, .game_form  textarea {
+padding: 9px;
+border: solid 1px #E5E5E5;
+margin-top: 5px;
+margin-bottom: 20px;
+font: normal 13px/100% "raleway-bold", arial;
+background: #FFFFFF;
+box-sizing: border-box;
+}
+
+.game_form select {
+    border-radius: 0;
+    outline: 0;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    font: normal 18px "raleway-bold", arial;
+    background: url('../img/select_arrow.png') #FFFFFF;
+    background-repeat: no-repeat;
+    background-position: right top;
+    cursor: pointer;
+}
+
+.game_form select::-ms-expand {
+    display: none;
+}
+
+.game_form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.game_form  label {
+display: inline-block;
+font-size: 16px;
+color: #383838;
+background: rgba(0, 0, 0, 0.08);
+margin: 0;
+padding: 10px;
+box-sizing: border-box;
+}
+
+.game_form input#submit {
+width: 220px;
+background: #E5E5E5;
+border: 1px solid #FFFFFF;
+font-size: 14px;
+color: #4b4848;
+}
+
+.form_confirm {
+    clear: both;
+    padding: none;  
+}
+
+.cancel_form_link {
+    margin-top: 5px; 
+}
+
+
+/* DELETE GAME FORM */
+.game_delete_form input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+.delete_form_checkbox_wrapper{
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+.game_delete_form input, .game_delete_form label, .game_delete_form select, .game_delete_form textarea{
+    width: auto;
+    max-width: 100%;
+    margin-bottom:15px;
+}
+
+.game_form .delet_game_checkbox_label {
+    margin-right: 10px;
+}
+
+
+
+/* Game Stats Tables*/
+
+.half_page {
+    width: 50%;
+    float: left;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.half_page:nth-child(1) {
+    padding-right: 10px;
+} 
+
+
+.half_page:nth-child(2) {
+    padding-left: 10px;
+}
+
+.game_table_edit thead{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+
+@media screen and (max-width: 900px){
+    .half_page {
+        width: 100%;
+        padding: 0!important;
+    }
+}
+
+

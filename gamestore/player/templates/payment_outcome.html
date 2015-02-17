@@ -1,0 +1,33 @@
+{% extends "content_base.html" %}
+
+{% block player_selection %}
+	class="selected"
+{% endblock %}
+
+{% block content_title %}	
+	{{status}}
+{% endblock %}
+
+{% block content %}
+	<div id="payment_outcome">
+		{{message}} 
+		<br /> 
+		<br /> 
+		{% if status == "success" %} 
+			<br /> 
+			<span class="highlight">You`ve purchased: </span> 
+			<br /><br /><br /> 
+			<img src="{{game_image}}" /> 
+			<span class="highlight">{{game_name}}</span> 
+			<br /> 
+			<a href="/play/{{game_name}}">Play ></a> 
+		{% endif %} 
+		{% if status ==	"cancel" %} 
+			<a href="/payment/{{game_id}}">Back to Payment ></a> 
+			<a href="/games/">&lt;&nbsp; Back To Games</a> 
+		{% endif %} 
+		{% if status == "error" %} 
+			<a href="/games/">&lt;&nbsp; Back To Games</a> 
+		{% endif %}
+	</div>
+{% endblock %} 

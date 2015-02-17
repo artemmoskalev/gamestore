@@ -1,0 +1,34 @@
+{% extends "developer.html" %}
+
+{% block developer_edit_selection %}
+selected
+{% endblock %}
+
+{% block developer_main %}
+	
+	<h3 class="dev_form_title">Your games</h3>
+
+	<table class="game_table_edit">
+	  <thead>
+	    <tr> 
+	      <th>Name</th>
+	      <th class="form_iframe">IFrame Url</th>
+	      <th>show</th>
+	      <th>Edit</th>
+	      <th>Delete</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{% for game in games.all %}
+	    <tr>
+	      <td>{{game.name}}</td>
+	      <td class="form_iframe">{{game.url}}</td>
+	      <td><a href="/games/{{game.name}}/">show</a></td>
+	      <td><a href="/developer/inventory/edit/{{game.pk}}/">edit</a></td>
+	      <td><a href="/developer/inventory/delete/{{game.pk}}/">delete</a></td>
+	    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+	
+{% endblock %}

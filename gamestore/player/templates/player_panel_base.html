@@ -1,0 +1,19 @@
+{% extends "content_base.html" %}
+
+{% block player_selection %}
+	class="selected"
+{% endblock %}
+
+{% block content_title %}	
+	YOUR GAMES
+{% endblock %}
+
+{% block content %}
+	<div class="player_panel">
+		<a href="/scorepanel/">My Scores</a>
+		<a href="/playerpanel/">My Games</a>		
+	</div>
+	{% block panel_data %}
+	
+	{% endblock %}
+{% endblock %}

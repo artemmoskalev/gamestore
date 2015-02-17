@@ -1,0 +1,87 @@
+{% extends "developer.html" %}
+
+{% block developer_stats_selection %}
+selected
+{% endblock %}
+
+{% block developer_main %}
+
+	<h3 class="dev_form_title">Statistics</h3>
+
+	<div class="stat_year_wrapper">
+
+		<table class="game_stats_header">
+
+			<tbody>
+				<td class="stats_year_link">
+					{% if last_year %}
+					<a href="/developer/stats/?year={{last_year}}">Last year</a> 
+					{% endif %}
+				</td>
+				<td class="stats_year_tittle">
+					{% if year %}
+					<span>Year: {{year}}</span> 
+					{% endif %}
+				</td>
+				<td class="stats_year_link">
+					{% if next_year %}
+					<a href="/developer/stats/?year={{next_year}}">Next year</a> 
+					{% endif %}
+				</td>
+			<tbody>
+
+		</table>
+
+	</div>
+
+	<div class="stat_tables_wrapper">
+		<div class="half_page">
+			<h4 class="stat_table_title">Games by revenue</h4>
+
+			<table class="game_table_edit">
+			  <thead>
+			    <tr> 
+			      <th>Name</th>
+			      <th>Revenue</th>	
+			      <th>Copies sold</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for game_stat in stats_by_game %}
+			    <tr>
+			      <td>{{game_stat.game.name}}</td>
+			      <td>{{game_stat.revenue}} €</td>
+			      <td>{{game_stat.copies_sold}}</td>
+			    </tr>
+			    {% endfor %}
+			  </tbody>
+			</table>
+		</div>
+
+
+		<div class="half_page">
+			
+		<h4 class="stat_table_title">Monthly revenue</h4>
+
+			<table class="game_table_edit">
+			  <thead>
+			    <tr> 
+			      <th>Month</th>
+			      <th>Revenue</th>
+			      <th>Copies sold</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for month_stat in stats_by_month %}
+			    <tr>
+			      <td>{{month_stat.month}}</td>
+			      <td>{{month_stat.revenue}} €</td>
+			      <td>{{month_stat.copies_sold}}</td>
+			    </tr>
+			    {% endfor %}
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
+{% endblock %}

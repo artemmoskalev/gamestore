@@ -1,0 +1,43 @@
+<section class="wrapper_game_form">
+	<div class="content_game_form">
+		<form class="game_form" method="POST" action=".">	
+			{% csrf_token %}	
+			<div class="form_half">			
+
+			    <label for="{{form.name.id_for_label}}">Name:</label>
+			    {{form.name}}<br />		
+
+			    <label for="{{form.url.id_for_label}}">URL to game location:</label>
+			    {{form.url}}<br />	
+
+			    <label for="{{form.price.id_for_label}}">Price:</label>
+			    {{form.price}}<br />			
+			
+			    <label for="{{form.category.id_for_label}}">Category/categorys:</label>
+			    {{form.category}}<br />	
+
+			    <label for="{{form.imageUrl.id_for_label}}">URL to game image:</label>
+			    {{form.imageUrl}}<br />	
+			    
+			</div>    
+
+
+		    <div class="form_half">
+		    	<label for="{{form.description.id_for_label}}">Description:</label>
+			    {{form.description}}<br />	
+		    </div>
+
+		    <div class="form_confirm">		      		   
+			    <input type="submit" value="Confirm" id="submit" />	
+		    </div>
+
+		    <div class="cancel_form_link"><a href="/developer/inventory/">Cancel</a></div>	
+
+		    <p id="error">
+				{{error}}
+			</p>
+
+		</form>		
+		
+	</div><!-- end content -->
+</section>	

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block main %}
+	<section class="top">		
+		<div class="wrapper content_header">		
+			<div class="content_navigation">							
+				<ul>
+					{% block navigation_link %}					
+					{% endblock %}
+					<li><a href="/games/" class="grid" title="Home"></a></li>
+				</ul>									
+			</div>
+			<h1 class="title">
+				{% block content_title %}					
+				{% endblock %}
+			</h1>			
+		</div><!-- end content header -->	
+	</section>
+	
+	<section class="wrapper">
+		<div class="content">			
+			{% block content %}			
+			{% endblock %}						
+		</div><!-- end content -->
+	</section>
+{% endblock %}

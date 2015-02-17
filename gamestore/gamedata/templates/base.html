@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Gamestore</title>
+	<meta charset="utf-8">		
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">		
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/header_scaling.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/tiles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/content.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom_pages.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'alert_messages/css/jquery.toastmessage.css' %}">
+	
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'alert_messages/jquery.toastmessage.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>  
+</head>
+<body>
+	
+	<header>
+		<div class="logo">
+			<a href="/"><img src="{% static 'img/logo.png' %}" title="Web Software Development CSE-C3210" alt="WSD-3210"/></a>
+		</div>
+		
+		<div id="menu_icon"></div>
+		
+		<nav>
+			<ul>
+				<li><a href="/games/" {% block index_selection %} {% endblock %}>Home</a></li>
+				{% if perms.gamedata.can_play %}
+					<li><a href="/playerpanel/" {% block player_selection %} {% endblock %}>Play!</a></li>
+				{% endif %}
+				{% if perms.gamedata.can_publish %}
+					<li><a href="/developer/" {% block developer_selection %} {% endblock %}>Developer?</a></li>
+				{% endif %}
+				<li><a href="/about/" {% block about_selection %} {% endblock %}>About</a></li>
+			</ul>
+		</nav>
+
+		<nav>
+			<ul id="auth_block">
+				{% if not user.is_authenticated %}
+					<li><a href="/login/" {% block login_selection %} {% endblock %}>Login</a></li>
+					<li><a href="/register/" {% block register_selection %} {% endblock %}>Registration</a></li>	
+				{% else %}				
+					<li><a href="/logout/">Log out</a></li>	
+				{% endif %}		
+			</ul>
+		</nav>
+
+		<div class="footer">			
+			{% if user.is_authenticated %}
+				Welcome, {{user.username}}
+			{% else %}
+			<div class="creators">
+				&#9426; Created by Artem & Esko	
+			</div>
+			{% endif %}			
+		</div >
+			
+	</header>
+	
+	<section class="main">
+		{% block main %}			
+		{% endblock %}
+	</section>
+</body>
+</html>

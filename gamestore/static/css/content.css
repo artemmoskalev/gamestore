@@ -1,0 +1,117 @@
+/* this CSS file contains the rules for styling the pages which have some content - 
+generally all pages except for the tiled one. Does not contain rules for separate pages */
+
+/* rules for the header of the page which contains the banner and the title of the current page */
+.wrapper {
+    width: 92.72727272727273%;
+    margin: 0 auto;
+}
+.top {
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    background: url('../img/banner.jpg') no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-position: 50% 20%;
+}
+/* element containing the title and the navigation buttons */
+.top .content_header {
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    left: 50%;
+    margin-left: -46.36363636363637%;
+}
+/* the header title */
+.top .title{
+    display: block;
+    width: 100%;color: #4b4848;
+    font-family: "raleway-bold", arial;
+    font-size: 26px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, .7);
+    padding: 20px;
+    text-transform: uppercase;
+    line-height: 30px;
+    margin: 0!important;
+    overflow: hidden;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* navigation buttons elements */
+.content_navigation {
+    display: block;
+    width: 100%;
+}
+.content_navigation ul {
+	float: right;
+    list-style: none;
+}
+.content_navigation ul li {
+    display: block;
+    float: left;
+    margin: 0 0 1px 1px;
+    position: relative;
+}
+.content_navigation a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url('../img/nav_buttons.png') no-repeat;
+    background-position: 0 0;
+    border-right: 1px solid #C9C9C9;
+    border-bottom: 2px solid #C9C9C9;
+}
+.content_navigation a.previous {
+    background-position: 0 0;
+}
+.content_navigation a.grid {
+    background-position: -41px 0;
+}
+.content_navigation a.next {
+    background-position: -82px 0;
+}
+
+/* section with main content */
+.content {
+    color: #4b4848;
+    font-family: "raleway-regular", arial;
+    font-size: 15px;
+    line-height: 22px;
+    padding: 60px 30px;
+    background: #fff;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* various paragraphs and sections */
+.content p {
+    color: #4b4848;
+    font-family: "raleway-regular", arial;
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 45px;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    color: #4b4848;
+    font-family: "raleway-semibold", arial;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 10px;
+}

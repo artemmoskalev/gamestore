@@ -1,0 +1,171 @@
+{% extends "content_base.html" %}
+
+{% block about_selection %}
+	class="selected"
+{% endblock %}
+
+{% block content_title %}	
+	ABOUT
+{% endblock %}
+
+{% block content %}
+	<h3>Authors:</h3>
+	<p>Artem Moskalev 465904<br>
+		Esko Vähämäki 428145<br>
+		Jiawei Kang 465069 (Disappeared after first meating, hasn't done anything)</p>
+
+<h3>For reviewer:</h3>
+
+<p>Url: <a href="http://wsdgamestore.herokuapp.com/">http://wsdgamestore.herokuapp.com</a><br>
+Our site has some premade test accounts. Those can be used while testing the site. You can login from <a href="http://wsdgamestore.herokuapp.com/login/">http://wsdgamestore.herokuapp.com/login/</a></p>
+
+<h4>Developer account:</h4>
+
+<p>user: dev1<br>
+pass: dev1<br></p>
+
+<h4>Player account:</h4>
+
+<p>user: player1<br>
+pass: player1</p>
+
+<h2 id="toc_2">Features:</h2>
+
+<p>In short we did manage to do all features (mandatory and optinal) exept Sosial sharing. Here is some more details of implemented features</p>
+
+<h3 id="toc_3">Authentication (mandatory, 100-200 points):</h3>
+
+<p>Our site has 2 types of users. Players and Developers. Developers can play and publish games and players can only play games. User creation can be tested in <br>
+<a href="http://wsdgamestore.herokuapp.com/register/">http://wsdgamestore.herokuapp.com/register/</a><br>
+Remember to use working email address because we actually have real email validation and you can't validate your account without that.</p>
+
+<p>For player account anything behind /developer/ will cause 403 reponse. Players can only play games they have bought. Developers can only edit their own games and see their own stats.</p>
+
+<p>By: Both</p>
+
+<p>Demonstration:<br>
+Create account from <a href="http://wsdgamestore.herokuapp.com/login/">http://wsdgamestore.herokuapp.com/login/</a></p>
+
+<p>Log in with player account given above (or create new one)<br>
+Goto <a href="http://wsdgamestore.herokuapp.com/developer/">http://wsdgamestore.herokuapp.com/developer/</a> and you shall see 403</p>
+
+<p>Log in with developer account given above (or create new one)<br>
+Goto <a href="http://wsdgamestore.herokuapp.com/developer/inventory/edit/15/">http://wsdgamestore.herokuapp.com/developer/inventory/edit/15/</a> and yous hall see 403 because game 15 isn't yours</p>
+
+<p>Our own valuation: 200/200</p>
+
+<h3 id="toc_4">Basic player functionalities (mandatory, 100-300 points):</h3>
+
+<p>By:</p>
+
+<p>Demonstration:</p>
+
+<p>Our own valuation: 300/300</p>
+
+<h3 id="toc_5">Basic developer functionalities (mandatory 100-200 points):</h3>
+
+<p>Basic player functionality can be tested in <a href="http://wsdgamestore.herokuapp.com/developer/">http://wsdgamestore.herokuapp.com/developer/</a>. You must be logged in as developer to get there. There is allso link to developer sites on the left side menu, if your logged in as developer.</p>
+
+<p>By: Esko</p>
+
+<p>Demonstration:<br>
+Login with developer account given above (dev1) (Use that because it has some premade games/transaction history to test the functionality!)</p>
+
+<p>Goto <br>
+<a href="http://wsdgamestore.herokuapp.com/developer/">http://wsdgamestore.herokuapp.com/developer/</a><br>
+to see the main view of developer site. There is some basic information of your developer account. You navigate developer pages you can click links on top of the developer panel (overview, inventory, add a game, statistics). <br>
+Under inventory you can edit/delete/view your current games.<br>
+Fromm Add a Game you can add game to your inventory.<br>
+From statistics you can see some information about game sales by year. As devault you see current year's stats by revenue and month. You can use last year and next year links to navigate trought years.</p>
+
+<p>Our own valuation: 200/200 points</p>
+
+<h3 id="toc_6">Game/service interaction (mandatory 100-200 points):</h3>
+
+<p>By: Artem</p>
+
+<p>Demonstration:</p>
+
+<p>Our own valuation: 200/200</p>
+
+<h3 id="toc_7">Quality of Work (mandatory 0-100 points):</h3>
+
+<p>By: Both</p>
+
+<p>Demonstration:</p>
+
+<p>Our own valuation: ???/100</p>
+
+<h3 id="toc_8">Save/load feature (0-100 points):</h3>
+
+<p>By: Artem</p>
+
+<p>Demonstration:</p>
+
+<p>Our own valuation: 100/100</p>
+
+<h3 id="toc_9">RESTful API (0-100 points)</h3>
+
+<p>Our site has 2 restfull apis. One for public use (can be used to get public game data like games by category, name, publisher and etc) and one for developer usege that can be used to get information of developers sales. Developer rest api is authenticated by api key found on developers overview <a href="http://wsdgamestore.herokuapp.com/developer/">http://wsdgamestore.herokuapp.com/developer/</a></p>
+
+<p>By: Esko</p>
+
+<p>Demonstration:<br>
+Public api can be accessed on <a href="http://wsdgamestore.herokuapp.com/api/games.json">http://wsdgamestore.herokuapp.com/api/games.json</a><br>
+Its possible parameters are: name, exactname, category, publisher, orderby = (name, category, price), order = (reverse), showmaxamount<br>
+Some examples:<br>
+<a href="http://wsdgamestore.herokuapp.com/api/games.json?callback=mycustomcallback&category=adventure">http://wsdgamestore.herokuapp.com/api/games.json?callback=mycustomcallback&amp;category=adventure</a><br>
+<a href="http://wsdgamestore.herokuapp.com/api/games.json?callback=mycustomcallback&category=adventure&publisher=dev2&showmaxamount=5">http://wsdgamestore.herokuapp.com/api/games.json?callback=mycustomcallback&amp;category=adventure&amp;publisher=dev2&amp;showmaxamount=5</a><br>
+<a href="http://wsdgamestore.herokuapp.com/api/games.json?callback=mycustomcallback&orderby=name">http://wsdgamestore.herokuapp.com/api/games.json?callback=mycustomcallback&amp;orderby=name</a></p>
+
+<p>Developer api can be accessed on <a href="http://wsdgamestore.herokuapp.com/api/developer.json">http://wsdgamestore.herokuapp.com/api/developer.json</a><br>
+For developer api get request you need to allways pass username (=your username) and key (= api key from developer panel overview). Other parameters are year and order.<br>
+Some examples:<br>
+Get years 2014 sales for user dev1 (games by revenue)<br>
+<a href="http://wsdgamestore.herokuapp.com/api/developer.json?callback=mycustomcallbac&user=dev1&key=UR4QsKbvGnxdfpJ4ArX6WRHSHk4GHHJ3KGaDju33ku23unT8kXKR9AUwmVHY9bz5&year=2014&order=reverse">http://wsdgamestore.herokuapp.com/api/developer.json?callback=mycustomcallbac&amp;user=dev1&amp;key=UR4QsKbvGnxdfpJ4ArX6WRHSHk4GHHJ3KGaDju33ku23unT8kXKR9AUwmVHY9bz5&amp;year=2014&amp;order=reverse</a><br>
+Get all sales for user dev1 (games by revenue)<br>
+<a href="http://wsdgamestore.herokuapp.com/api/developer.json?callback=mycustomcallbac&user=dev1&key=UR4QsKbvGnxdfpJ4ArX6WRHSHk4GHHJ3KGaDju33ku23unT8kXKR9AUwmVHY9bz5">http://wsdgamestore.herokuapp.com/api/developer.json?callback=mycustomcallbac&amp;user=dev1&amp;key=UR4QsKbvGnxdfpJ4ArX6WRHSHk4GHHJ3KGaDju33ku23unT8kXKR9AUwmVHY9bz5</a></p>
+
+<p>Our own valuation: 100/100</p>
+
+<h3 id="toc_10">3rd party login (0-100 points)</h3>
+
+<p>3rd party login is done with python-sosial-auth <a href="https://github.com/omab/python-social-auth">https://github.com/omab/python-social-auth</a></p>
+
+<p>By: Esko</p>
+
+<p>Demonstration:<br>
+In login page <br>
+<a href="http://wsdgamestore.herokuapp.com/login/">http://wsdgamestore.herokuapp.com/login/</a><br>
+there is links to both twitter and google login. They can be tested with your own goole/twitter account.</p>
+
+<p>Our own valuation: 100/100</p>
+
+<h3 id="toc_11">Own game (0-100 points)</h3>
+
+<p>By: Artem</p>
+
+<p>Demonstration:</p>
+
+<p>Our own valuation: 100/100</p>
+
+<h3 id="toc_12">Mobile Friendly (0-50 points)</h3>
+
+<p>Has been done by both troughout template development, but main credit can be given to Artem Moskalev.</p>
+
+<p>By:<br>
+Both</p>
+
+<p>Demonstration:<br>
+Can be demostrated by going anywhere on site with mobile device or by scaling webrowser.</p>
+
+<p>Our own valuation: 50/50</p>
+
+<h3 id="toc_13">Non-functional requirements (0-200 points)</h3>
+
+<p>By:</p>
+
+<p>Demonstration:</p>
+
+<p>Our own valuation: ???/200</p>
+{% endblock %}

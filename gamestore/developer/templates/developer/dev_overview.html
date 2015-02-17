@@ -1,0 +1,46 @@
+{% extends "developer.html" %}
+
+{% block developer_overview_selection %}
+selected
+{% endblock %}
+
+{% block developer_main %}
+	<h3 class="dev_form_title">Overview</h3>
+
+	<div class="overview_content">
+		<div class="half_page">
+			<div class="overview_info_block"><span>Your logged ins as: <strong>{{ user.get_full_name|default:user.username }}</strong></span> </div>
+
+			<div class="overview_info_block"><span>Total revenue: <strong>{{total_revenue}} €</strong><br></span> </div>
+
+			<div class="overview_info_block"><span>Your api key is: <strong>{{api_key}}</strong><br></span> </div>
+
+		</div>
+
+		<div class="half_page">
+			
+			<h4 class="stat_table_title">5 top Games</h4>
+
+			<table class="game_table_edit">
+			  <thead>
+			    <tr> 
+			      <th>Name</th>
+			      <th>Revenue</th>	
+			      <th>Copies sold</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for game_stat in five_most_revenue %}
+			    <tr>
+			      <td>{{game_stat.game.name}}</td>
+			      <td>{{game_stat.revenue}}</td>
+			      <td>{{game_stat.copies_sold}}</td>
+			    </tr>
+			    {% endfor %}
+			  </tbody>
+			</table>
+
+		</div>
+	</div>
+
+{% endblock %}

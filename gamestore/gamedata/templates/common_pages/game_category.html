@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block index_selection %}
+	class="selected"
+{% endblock %}
+
+{% block main %}
+	{% for game in games %}	
+		<div class="tile game">			
+			<img src="{{game.img_url}}" class="media" alt="" />
+			<div class="caption">
+				<div class="game_title">
+					<h1>{{game.name}}</h1>
+				</div>
+			</div>			
+		</div>
+	{% endfor %}	
+{% endblock %}

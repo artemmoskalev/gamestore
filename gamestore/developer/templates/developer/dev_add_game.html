@@ -1,0 +1,12 @@
+{% extends "developer.html" %}
+
+{% block developer_add_selection %}
+selected
+{% endblock %}
+
+{% block developer_main %}
+	<h3 class="dev_form_title">Add a Game</h3>
+
+	{% include "developer/dev_game_form.html" %}
+
+{% endblock %}

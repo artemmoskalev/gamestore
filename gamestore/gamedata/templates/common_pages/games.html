@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block index_selection %}
+	class="selected"
+{% endblock %}
+
+{% block main %}
+	<div class="tile category">			
+		<img src="{% static 'img/action.png' %}" class="media" alt="" />
+		<div class="caption">
+			<div class="game_title">
+				<h1>Action Games</h1>
+			</div>
+		</div>			
+	</div>	
+	<div class="tile category">			
+		<img src="{% static 'img/adventure.png' %}" class="media" alt="" />
+		<div class="caption">
+			<div class="game_title">
+				<h1>Adventures</h1>
+			</div>
+		</div>			
+	</div>	
+	<div class="tile category">			
+		<img src="{% static 'img/sport.png' %}" class="media" alt="" />
+		<div class="caption">
+			<div class="game_title">
+				<h1>Sport Games</h1>
+			</div>
+		</div>			
+	</div>	
+	<div class="tile category">			
+		<img src="{% static 'img/strategy.png' %}" class="media" alt="" />
+		<div class="caption">
+			<div class="game_title">
+				<h1>Strategies</h1>
+			</div>
+		</div>			
+	</div>	
+	<div class="tile category">			
+		<img src="{% static 'img/puzzle.png' %}" class="media" alt="" />
+		<div class="caption">
+			<div class="game_title">
+				<h1>Puzzles</h1>
+			</div>
+		</div>			
+	</div>	
+	<div class="tile category">			
+		<img src="{% static 'img/misc.png' %}" class="media" alt="" />
+		<div class="caption">
+			<div class="game_title">
+				<h1>Miscellaneous</h1>
+			</div>
+		</div>			
+	</div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "content_base.html" %}
+
+{% block player_selection %}
+	class="selected"
+{% endblock %}
+
+{% block navigation_link %}					
+	<li><a href="/playerpanel/" class="previous" title="Back"></a></li>
+{% endblock %}
+
+{% block content_title %}	
+	PLAY!
+{% endblock %}
+
+{% block content %}		
+	<iframe id="game_screen" src="{{url}}"> 
+		You	browser does not support iFrames! 
+	</iframe>
+	
+	<script type="text/javascript">
+		// waits for the page and iframe to load all contents
+		$(document).ready(function() {
+			$("#game_screen").load(function() {	
+				// this does not work in IE < 9
+				addEventListener("message", onMessage);					
+			});			
+		});
+		/* function that get called when some message from the game window arrives */
+		function onMessage(event){
+			received_message = event.data
+			/* this part deals with the SCORE messages from the game */
+			if(received_message.messageType == "SCORE") {
+				score = received_message.score;
+				if(!isNaN(score)) {					
+					$.post("submitscore/", {"score": score}, function(data) {
+						if(data.status == "saved") {
+							$().toastmessage('showSuccessToast', "Your score has been saved!");							
+						} else if ("record") {
+							$().toastmessage('showSuccessToast', "Your score has been saved!");		
+							$().toastmessage('showNoticeToast', "You have achieved a new High Score!");							
+						}
+					}).fail(function() {
+						$().toastmessage('showErrorToast', "Score has not been submitted due to unknown error!");	
+					});
+				} 			
+			/* this part deals with the SAVE messages from the game */
+			} else if(received_message.messageType == "SAVE") {
+				$.post("savestate/", {"state": JSON.stringify(received_message.gameState)}, function(data) {
+					$().toastmessage('showSuccessToast', data);	
+				}).fail(function() {
+					$().toastmessage('showErrorToast', "Game state has not been submitted due to unknown error!");	
+				});
+			/* this part loads the previous game state when it receives the LOAD_REQUEST */
+			} else if(received_message.messageType == "LOAD_REQUEST") {
+				$.post( "loadstate/", function(response_message) {
+					if (response_message != "None") {										
+						response_message_json = JSON.parse(response_message);						
+						sendLoadMessage(response_message_json);		
+						$().toastmessage('showSuccessToast', "Successfully loaded your previous game state!");	
+					} else {
+						sendMessage("This game has no state to be loaded!");
+						$().toastmessage('showErrorToast', "This game has no state to be loaded!");
+					}
+				}).fail(function() {
+					$().toastmessage('showErrorToast', "Game state cannot be loaded due to unknown error!");	
+				});
+			}
+		}
+		/* function responsible for sending LOAD messages to the game from the service */
+		function sendLoadMessage(json_state) {			
+			var message = {
+					messageType: "LOAD",
+					gameState: json_state
+			};
+			var game = document.getElementById("game_screen").contentWindow;
+			game.postMessage(message, "*");
+		}
+		/* function responsible for sending text messages from the service to the game */
+		function sendMessage(string_message) {			
+			var message =  {
+					messageType: "MESSAGE",
+					message: string_message
+			};
+			var game = document.getElementById("game_screen").contentWindow;
+			game.postMessage(message, "*");
+		}
+	</script>
+{% endblock %}
